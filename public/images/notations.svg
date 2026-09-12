@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <title>Notations — original geometric sample</title>
+  <rect width="1200" height="900" fill="#e6e596"/>
+  <g fill="none" stroke="#343c2b" stroke-width="3"><path d="M100 160H1100M100 310H1100M100 460H1100M100 610H1100M100 760H1100"/><path d="M160 140V180M320 140V180M720 140V180M1030 140V180M240 290V330M480 290V330M560 290V330M880 290V330M160 440V480M640 440V480M960 440V480M320 590V630M400 590V630M720 590V630M1040 590V630M240 740V780M560 740V780M800 740V780"/></g>
+  <g fill="#343c2b"><circle cx="480" cy="310" r="12"/><circle cx="960" cy="460" r="12"/><circle cx="400" cy="610" r="12"/></g>
+</svg>

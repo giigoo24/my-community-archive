@@ -1,0 +1,20 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { localPath } from '../lib/paths';
+interface Props { project: CollectionEntry<'projects'> }
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, year, medium, cover, coverAlt, gallery } = project.data;
+---
+<article class="project-detail">
+  <img class="project-image" src={localPath(cover)} alt={coverAlt} decoding="async" />
+  <div class="project-copy">
+    <h1>{title}</h1>
+    <p class="metadata">{year} · {medium}</p>
+    <div class="prose"><Content /></div>
+  </div>
+  {gallery.map((item) => <figure>
+    <img class="project-image" src={localPath(item.src)} alt={item.alt} loading="lazy" decoding="async" />
+    {item.caption && <figcaption>{item.caption}</figcaption>}
+  </figure>)}
+</article>

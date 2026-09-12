@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Project from './Project.astro';
+import { site } from '../site';
+import { localPath } from '../lib/paths';
+interface Props { index?: boolean }
+const { index = false } = Astro.props;
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id));
+---
+<Layout title={index ? 'Index' : undefined} mode={index ? 'index' : 'projects'}>
+  <h1 class="sr-only">{index ? 'Project index' : 'Selected projects'}</h1>
+  <div class="group-switch" role="group" aria-label="Choose a body of work">
+    {site.groups.map((group, i) => <button type="button" data-switch={group.id} aria-pressed={i === 0} aria-controls={`group-${group.id}`}>{group.label}</button>)}
+  </div>
+  <main id="main" class="workspace" tabindex="-1">
+    {site.groups.map((group, groupIndex) => <section id={`group-${group.id}`} class="group" data-group={group.id} data-selected={groupIndex === 0} aria-label={group.label}>
+      <div class="group-base">
+        <header class="group-heading"><h2>{group.label}</h2></header>
+        <div class:list={['feed', { 'index-grid': index }]} tabindex="0" aria-label={`${group.label} — scroll to browse`}>
+          {projects.filter((p) => p.data.group === group.id).map((project, i) => <article class="project-entry">
+            <a class="project-link" href={localPath(`projects/${project.id}/`)} data-project={project.id} data-side={group.id} aria-label={`View ${project.data.title}`}>
+              <img class="project-image" src={localPath(project.data.cover)} alt={project.data.coverAlt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+              <div class="entry-heading"><h3>{project.data.title}</h3><span>{project.data.year}</span></div>
+            </a>
+            {!index && <div class="entry-description"><p class="metadata">{project.data.medium}</p><p>{project.data.summary}</p><a href={localPath(`projects/${project.id}/`)} data-project={project.id} data-side={group.id}>[View project]</a></div>}
+          </article>)}
+          {!projects.some((p) => p.data.group === group.id) && <p class="empty-group">No projects here yet.</p>}
+        </div>
+      </div>
+      <div class="project-panel" data-panel={group.id} role="region" aria-label={`${group.label} project detail`} hidden>
+        <header class="panel-heading"><button type="button" data-close={group.id}>Close project</button><a data-permalink href={localPath()}>Permalink</a></header>
+        <div class="panel-scroll" tabindex="0"></div>
+      </div>
+    </section>)}
+  </main>
+  {projects.map((project) => <template data-project-template={project.id} data-side={project.data.group}><Project project={project} /></template>)}
+  <script src="../scripts/gallery.ts"></script>
+</Layout>

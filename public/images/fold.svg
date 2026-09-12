@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <title>Fold — original geometric sample</title>
+  <rect width="1200" height="900" fill="#dddcd7"/>
+  <path d="M240 100H840L970 800H370Z" fill="#f7f6f0"/>
+  <path d="M240 100L580 370L370 800Z" fill="#e8e6dc"/>
+  <path d="M840 100L580 370L970 800Z" fill="#c5c2b8"/>
+  <path d="M580 370L690 800H370Z" fill="#fffef6"/>
+  <path d="M240 100L580 370L970 800" stroke="#aaa79d" stroke-width="1" fill="none"/>
+</svg>

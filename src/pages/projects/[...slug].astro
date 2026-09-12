@@ -1,0 +1,17 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Project from '../../components/Project.astro';
+import { localPath } from '../../lib/paths';
+export async function getStaticPaths() {
+  return (await getCollection('projects')).map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+interface Props { project: CollectionEntry<'projects'> }
+const { project } = Astro.props;
+---
+<Layout title={project.data.title} description={project.data.summary} image={project.data.cover} mode="detail">
+  <main id="main" class="standalone" tabindex="-1">
+    <header class="page-heading"><a href={localPath()}>Back to projects</a></header>
+    <Project project={project} />
+  </main>
+</Layout>

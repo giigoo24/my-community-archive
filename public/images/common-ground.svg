@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <title>Common ground — original geometric sample</title>
+  <rect width="1200" height="900" fill="#e1c9c2"/>
+  <path d="M0 900V490L220 410L410 510L670 300L880 390L1200 220V900Z" fill="#6e7970"/>
+  <path d="M0 900V720L300 500L510 670L810 470L1200 570V900Z" fill="#354c40"/>
+  <path d="M0 775L280 670L580 760L850 650L1200 810" fill="none" stroke="#e1c9c2" stroke-width="3"/>
+</svg>

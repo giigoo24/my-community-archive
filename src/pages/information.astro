@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Content } from '../content/information.md';
+import { site } from '../site';
+import { localPath } from '../lib/paths';
+---
+<Layout title="Information" mode="information">
+  <main id="main" class="information" tabindex="-1">
+    <header class="page-heading"><h1>Information</h1><a href={localPath()}>Back to projects</a></header>
+    <div class="information-body prose"><Content />{site.email && <p><a href={`mailto:${site.email}`}>{site.email}</a></p>}</div>
+  </main>
+</Layout>

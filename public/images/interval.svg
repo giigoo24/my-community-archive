@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <title>Interval — original geometric sample</title>
+  <rect width="1200" height="900" fill="#bbc9cd"/>
+  <path d="M0 710H1200V900H0Z" fill="#92a6ae"/>
+  <g fill="#244654"><rect x="160" y="200" width="42" height="470"/><rect x="295" y="200" width="42" height="470"/><rect x="430" y="200" width="42" height="470"/><rect x="700" y="200" width="42" height="470"/><rect x="835" y="200" width="42" height="470"/><rect x="970" y="200" width="42" height="470"/></g>
+  <path d="M0 710H1200" stroke="#244654" stroke-width="2"/>
+</svg>

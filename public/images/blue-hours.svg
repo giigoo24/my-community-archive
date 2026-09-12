@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <title>Blue hours — original geometric sample</title>
+  <rect width="1200" height="900" fill="#222c4b"/>
+  <rect x="160" y="160" width="880" height="580" fill="#647c9b"/>
+  <rect x="160" y="530" width="880" height="210" fill="#3c536e"/>
+  <path d="M450 160V740M750 160V740" stroke="#222c4b" stroke-width="20"/>
+  <path d="M160 410H1040" stroke="#222c4b" stroke-width="20"/>
+</svg>

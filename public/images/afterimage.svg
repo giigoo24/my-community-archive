@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <title>Afterimage — original geometric sample</title>
+  <rect width="1200" height="900" fill="#dedfd2"/>
+  <rect x="170" y="130" width="620" height="590" fill="#344cba"/>
+  <rect x="410" y="290" width="620" height="480" fill="#de704b"/>
+  <path d="M410 290H790V720H410Z" fill="#563e74"/>
+</svg>

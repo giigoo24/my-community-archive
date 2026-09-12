@@ -1,0 +1,39 @@
+---
+import { site } from '../site';
+import { localPath } from '../lib/paths';
+import '../styles/site.css';
+interface Props { title?: string; description?: string; image?: string; mode?: 'projects' | 'index' | 'information' | 'detail' }
+const { title, description = site.description, image, mode = 'projects' } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : site.name;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const imageURL = image && Astro.site ? new URL(localPath(image), Astro.site) : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {imageURL && <meta property="og:image" content={imageURL} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {imageURL && <meta name="twitter:image" content={imageURL} />}
+  </head>
+  <body data-mode={mode}>
+    <!-- THESIS: The work leads; no promotional hero. OWN-WORLD: White, black, hairlines, close-set sans serif. STORY: Browse two bodies of work, inspect a project, learn about its author. FIRST VIEWPORT: Equal scrolling image columns, fixed group headings, persistent three-part footer. FORM: User-pinned Cargo G937 reference; independent implementation. Signature: opposing half-width project slides, 500ms ease-out. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <footer class="site-footer">
+      <a class="site-name" href={localPath()}>{site.name}</a>
+      <a href={localPath(mode === 'projects' ? 'index/' : '')}>{mode === 'projects' ? 'Index' : 'Projects'}</a>
+      <a href={localPath('information/')} aria-current={mode === 'information' ? 'page' : undefined}>Information</a>
+    </footer>
+  </body>
+</html>
